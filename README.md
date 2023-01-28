@@ -1,16 +1,30 @@
-# sky_cast
+# Sky Cast
 
-A project for sky status (Weather).
+Project for showing the weather of any city you want, and have option for making dart/light mode (and the primary color depend on the current weather) and make the temperature units fahrenheit / celsius. 
 
-## Getting Started
+### using:
 
-This project is a starting point for a Flutter application.
+#### BLoC pattern, Bloc Architecture, Dart/Light mode and Material Design 3
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screens of the Project:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Dark mode:
+
+<div>
+<img src="https://user-images.githubusercontent.com/45398293/215274654-a6217937-47f8-4979-a76c-2831ed826e29.jpg"width="25%" height="25%">
+</div>
+<div>
+<img src="https://user-images.githubusercontent.com/45398293/215274659-2d6f54cb-3c5a-4252-8dbc-b47e06286bcd.jpg"width="25%" height="25%">
+</div>
+
+
+### Light mode:
+
+<div>
+<img src="https://user-images.githubusercontent.com/45398293/215274736-badd2a66-cf1c-4ce1-9a9c-9bec6f00e5de.jpg"width="25%" height="25%">
+</div>
+<div>
+<img src="https://user-images.githubusercontent.com/45398293/215274738-92ff07ae-632a-4431-850b-e70a33335546.jpg"width="25%" height="25%">
+</div>

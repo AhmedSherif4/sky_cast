@@ -4,7 +4,7 @@ Project for showing the weather of any city you want, and have option for making
 
 ### using:
 
-#### BLoC pattern, Bloc Architecture, Dart/Light mode and Material Design 3
+#### BLoC pattern, Bloc Architecture, Dart/Light mode and Material Design 3, RestAPI
 
 
 ## Screens of the Project:

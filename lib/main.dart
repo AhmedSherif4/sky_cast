@@ -12,7 +12,6 @@ import 'application/dependency_injection.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await initialAppModule();
   Bloc.observer = WeatherBlocObserver();
 
   HydratedBloc.storage = await HydratedStorage.build(

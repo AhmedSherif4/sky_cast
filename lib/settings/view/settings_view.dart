@@ -48,11 +48,9 @@ class SettingsPage extends StatelessWidget {
                   'Change theme mode of the whole application.',
                 ),
                 trailing: Switch(
-                  value: context.watch<ThemeModeBloc>().isDark,
+                  value: state.switchValue,
                   onChanged: (isDark) {
-                    context.read<ThemeModeBloc>().add(ThemeChanged(
-                        theme: isDark ?AppTheme.Dark: AppTheme.Light ,
-                        isDark: isDark));
+                    context.read<ThemeModeBloc>().add(ThemeChanged(switchValue: isDark));
                   },
                 ),
               );

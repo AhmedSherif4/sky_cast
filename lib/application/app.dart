@@ -15,7 +15,7 @@ class WeatherApp extends StatelessWidget {
 
   final WeatherRepository _weatherRepository;
 
-  final AppPreferences _appPreferences = instanceGetIt<AppPreferences>();
+
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
@@ -26,12 +26,12 @@ class WeatherApp extends StatelessWidget {
             create: (_) => ThemeCubit(),
           ),
           BlocProvider<ThemeModeBloc>(
-            create: (_) => instanceGetIt<ThemeModeBloc>()..add(
-              ThemeChanged(
-                theme: _appPreferences.getTheme(),
-                isDark: _appPreferences.getTheme()==AppTheme.Light?false:true,
-              ),
-            ),
+            create: (_) => ThemeModeBloc()
+              /* ..add(
+                ThemeChanged(
+                  switchValue: 
+                ),
+              ), */
           ),
         ],
         child: const WeatherAppView(),
@@ -51,17 +51,29 @@ class WeatherAppView extends StatelessWidget {
           builder: (context, color) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              theme: themeState.themeData.copyWith(
-                primaryColor: color,
-                appBarTheme: AppBarTheme(
-                  backgroundColor: color,
-                ),
-                switchTheme: SwitchThemeData(
-                  trackColor: MaterialStateProperty.all(color),
-                ),
-                floatingActionButtonTheme:
-                    FloatingActionButtonThemeData(backgroundColor: color),
-              ),
+              theme: themeState.switchValue
+                  ? appThemeData[AppTheme.Dark]?.copyWith(
+                      primaryColor: color,
+                      appBarTheme: AppBarTheme(
+                        backgroundColor: color,
+                      ),
+                      switchTheme: SwitchThemeData(
+                        trackColor: MaterialStateProperty.all(color),
+                      ),
+                      floatingActionButtonTheme:
+                          FloatingActionButtonThemeData(backgroundColor: color),
+                    )
+                  : appThemeData[AppTheme.Light]?.copyWith(
+                      primaryColor: color,
+                      appBarTheme: AppBarTheme(
+                        backgroundColor: color,
+                      ),
+                      switchTheme: SwitchThemeData(
+                        trackColor: MaterialStateProperty.all(color),
+                      ),
+                      floatingActionButtonTheme:
+                          FloatingActionButtonThemeData(backgroundColor: color),
+                    ),
               home: const WeatherPage(),
             );
           },

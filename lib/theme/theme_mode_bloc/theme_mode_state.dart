@@ -3,21 +3,21 @@ part of 'theme_mode_bloc.dart';
 
 class ThemeModeState extends Equatable {
 
-  final ThemeData themeData;
+  final bool switchValue;
 
   const ThemeModeState({
-    required this.themeData,
+    required this.switchValue,
   });
 
   @override
-  List<Object?> get props => [themeData];
+  List<Object?> get props => [switchValue];
 
 
-/*  factory ThemeModeState.fromJson(Map<String, dynamic> json) =>
-      ThemeModeState(themeData: json['themeData'] as ThemeData);
+ factory ThemeModeState.fromJson(Map<String, dynamic> json) =>
+      ThemeModeState(switchValue: json['switchValue']??false );
 
 
   Map<String, dynamic> toJson(ThemeModeState state) =>
   
-      <String, dynamic>{'themeData': this.themeData}; */
+      <String, dynamic>{'switchValue': switchValue}; 
 }

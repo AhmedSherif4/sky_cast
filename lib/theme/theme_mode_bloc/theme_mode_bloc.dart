@@ -19,5 +19,5 @@ class ThemeModeBloc extends HydratedBloc<ThemeModeEvent, ThemeModeState> {
       ThemeModeState.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson(ThemeModeState state) => state.toJson(state);
+  Map<String, dynamic>? toJson(ThemeModeState state) => state.toJson();
 }

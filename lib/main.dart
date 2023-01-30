@@ -6,7 +6,6 @@ import 'package:weather_repository/weather_repository.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'application/app.dart';
-import 'application/dependency_injection.dart';
 
 //setup our HydratedStorage to persist state across sessions.
 void main() async {

@@ -1,6 +1,6 @@
 # Sky Cast
 
-Project for showing the weather of any city you want, and have option for making dart/light mode (and the primary color depend on the current weather) and make the temperature units fahrenheit / celsius. 
+A project for showing the weather of any city you want, and has an option for making dart/light mode (and the primary color depending on the current weather) and making the temperature units Fahrenheit / celsius.
 
 ### using:
 

@@ -15,16 +15,13 @@ final Map<AppTheme, ThemeData> appThemeData = {
     useMaterial3: true,
     textTheme: GoogleFonts.rajdhaniTextTheme(),
     colorScheme: const ColorScheme.light().copyWith(),
-
-     appBarTheme: AppBarTheme(
-                  centerTitle: true,
-                  elevation: 0,
-                  titleTextStyle: GoogleFonts.rajdhaniTextTheme()
-                      .apply(
-                          bodyColor: Colors.white, displayColor: Colors.white)
-                    .displayMedium,
-                ),
-               
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
+      titleTextStyle: GoogleFonts.rajdhaniTextTheme()
+          .apply(bodyColor: Colors.white, displayColor: Colors.white)
+          .displayMedium,
+    ),
   ),
   AppTheme.Dark: ThemeData.dark().copyWith(
     colorScheme: const ColorScheme.dark().copyWith(),
@@ -33,15 +30,12 @@ final Map<AppTheme, ThemeData> appThemeData = {
       displayColor: Colors.white70,
       bodyColor: Colors.white,
     ),
-
-     appBarTheme: AppBarTheme(
-                  centerTitle: true,
-                  elevation: 0,
-                  titleTextStyle: GoogleFonts.rajdhaniTextTheme()
-                      .apply(
-                          bodyColor: Colors.white, displayColor: Colors.white)
-                    .displayMedium,
-                ),
-   
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
+      titleTextStyle: GoogleFonts.rajdhaniTextTheme()
+          .apply(bodyColor: Colors.white, displayColor: Colors.white)
+          .displayMedium,
     ),
+  ),
 };

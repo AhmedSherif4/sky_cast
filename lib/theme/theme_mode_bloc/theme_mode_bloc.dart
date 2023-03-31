@@ -1,8 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:sky_cast/application/app_pref.dart';
-import '../theme_mode_manager.dart';
 part 'theme_mode_event.dart';
 part 'theme_mode_state.dart';
 

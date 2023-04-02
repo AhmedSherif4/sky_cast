@@ -1,84 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sky_cast/application/dependency_injection.dart';
-import 'package:sky_cast/theme/cubit/theme_cubit.dart';
-import 'package:sky_cast/theme/theme_mode_bloc/theme_mode_bloc.dart';
-import 'package:sky_cast/theme/theme_mode_manager.dart';
-import 'package:sky_cast/weather/view/weather_page.dart';
-import 'package:weather_repository/weather_repository.dart';
+import 'package:sky_cast/manager/routing/route_manager.dart';
 
-import 'app_pref.dart';
+import '../features/weather/view_model/cubit/weather_cubit.dart';
+import '../manager/material_design/theme_cubit/theme_cubit.dart';
+import '../manager/material_design/theme_manager.dart';
+import 'dependency_injection.dart';
 
-class WeatherApp extends StatelessWidget {
-  WeatherApp({super.key, required WeatherRepository weatherRepository})
-      : _weatherRepository = weatherRepository;
+class MyApp extends StatelessWidget {
+  const MyApp._internal();
 
-  final WeatherRepository _weatherRepository;
+  static const MyApp _instance = MyApp._internal();
 
+  factory MyApp() => _instance;
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: _weatherRepository,
-      child: MultiBlocProvider(
+    return MultiBlocProvider(
         providers: [
-          BlocProvider<ThemeCubit>(
-            create: (_) => ThemeCubit(),
-          ),
-          BlocProvider<ThemeModeBloc>(
-            create: (_) => ThemeModeBloc()
-              /* ..add(
-                ThemeChanged(
-                  switchValue: 
-                ),
-              ), */
-          ),
+          BlocProvider(create: (_) => instance<ThemeCubit>()),
+          BlocProvider(create: (_) => instance<WeatherCubit>()),
         ],
-        child: const WeatherAppView(),
-      ),
-    );
-  }
-}
-
-class WeatherAppView extends StatelessWidget {
-  const WeatherAppView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ThemeModeBloc, ThemeModeState>(
-      builder: (BuildContext context, ThemeModeState themeState) {
-        return BlocBuilder<ThemeCubit, Color>(
-          builder: (context, color) {
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
             return MaterialApp(
+              onGenerateRoute: RouteGenerator.getRoute,
+              initialRoute: Routes.weatherRoute,
               debugShowCheckedModeBanner: false,
-              theme: themeState.switchValue
-                  ? appThemeData[AppTheme.Dark]?.copyWith(
-                      primaryColor: color,
-                      appBarTheme: AppBarTheme(
-                        backgroundColor: color,
-                      ),
-                      switchTheme: SwitchThemeData(
-                        trackColor: MaterialStateProperty.all(color),
-                      ),
-                      floatingActionButtonTheme:
-                          FloatingActionButtonThemeData(backgroundColor: color),
-                    )
-                  : appThemeData[AppTheme.Light]?.copyWith(
-                      primaryColor: color,
-                      appBarTheme: AppBarTheme(
-                        backgroundColor: color,
-                      ),
-                      switchTheme: SwitchThemeData(
-                        trackColor: MaterialStateProperty.all(color),
-                      ),
-                      floatingActionButtonTheme:
-                          FloatingActionButtonThemeData(backgroundColor: color),
-                    ),
-              home: const WeatherPage(),
+              theme: appThemeData[AppTheme.light],
+              darkTheme: appThemeData[AppTheme.dark],
+              themeMode: context.read<ThemeCubit>().themeModeIsDark()
+                  ? ThemeMode.dark
+                  : ThemeMode.light,
             );
           },
-        );
-      },
-    );
+        ));
   }
 }

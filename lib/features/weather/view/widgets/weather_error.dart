@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../manager/material_design/font_manager.dart';
+import '../../../../manager/responsive_manager.dart';
+
 class WeatherError extends StatelessWidget {
   const WeatherError({super.key});
 
@@ -9,10 +12,12 @@ class WeatherError extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text('🙈', style: TextStyle(fontSize: 64)),
+        Text('🙈',
+            style: TextStyle(
+                fontSize: ResponsiveManager.getFontSize(FontSize.s60))),
         Text(
-          'Something went wrong!',
-          style: theme.textTheme.headlineSmall,
+          '\nSomething went wrong!',
+          style: theme.textTheme.headlineLarge,
         ),
       ],
     );

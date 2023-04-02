@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sky_cast/manager/routing/route_manager.dart';
@@ -32,6 +33,10 @@ class MyApp extends StatelessWidget {
               themeMode: context.read<ThemeCubit>().themeModeIsDark()
                   ? ThemeMode.dark
                   : ThemeMode.light,
+              //test adaptive
+              useInheritedMediaQuery: true,
+              locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
             );
           },
         ));

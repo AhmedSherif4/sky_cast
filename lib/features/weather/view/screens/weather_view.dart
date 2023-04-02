@@ -36,13 +36,10 @@ class WeatherView extends StatelessWidget {
               builder: (context, state) {
                 switch (state.status) {
                   case WeatherStatus.initial:
-                    print('ui init');
                     return const WeatherEmpty();
                   case WeatherStatus.loading:
-                    print('ui loading');
                     return const WeatherLoading();
                   case WeatherStatus.success:
-                    print('ui success');
                     return WeatherPopulated(
                       weather: state.weather,
                       onRefresh: () {
@@ -50,7 +47,6 @@ class WeatherView extends StatelessWidget {
                       },
                     );
                   case WeatherStatus.failure:
-                    print('ui failure');
                     return const WeatherError();
                 }
               },

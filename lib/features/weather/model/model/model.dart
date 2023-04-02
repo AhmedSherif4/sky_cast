@@ -6,6 +6,7 @@ class WeatherModel {
   final int pressure;
   final double feelsLike;
   final String countryName;
+  final String iconCode;
   WeatherModel({
     required this.id,
     required this.cityName,
@@ -14,6 +15,7 @@ class WeatherModel {
     required this.pressure,
     required this.feelsLike,
     required this.countryName,
+    required this.iconCode,
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
@@ -24,14 +26,16 @@ class WeatherModel {
         pressure: json["main"]["pressure"],
         feelsLike: json["main"]["feels_like"],
         countryName: json["sys"]["country"],
+        iconCode: json["weather"][0]["icon"],
       );
 
- static WeatherModel emptyWeather = WeatherModel(
+  static WeatherModel emptyWeather = WeatherModel(
       id: 0,
       cityName: 'No Name',
       main: 'No main',
       description: 'No Description',
       pressure: 0,
       feelsLike: 0.0,
-      countryName: 'No Country Name');
+      countryName: 'No Country Name',
+      iconCode: '01n');
 }

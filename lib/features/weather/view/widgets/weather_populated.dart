@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sky_cast/manager/responsive_manager.dart';
 
 import '../../model/model/model.dart';
 
@@ -19,6 +20,7 @@ class WeatherPopulated extends StatelessWidget {
       children: [
         _WeatherBackground(),
         RefreshIndicator(
+          backgroundColor: theme.primaryColor,
           onRefresh: onRefresh,
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
@@ -27,21 +29,30 @@ class WeatherPopulated extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 48),
-                  //TODO add icon with size 75, url is: https://openweathermap.org/img/wn/${icon}@2x.png,
-                  Text(
-                    weather.cityName,
-                    style: theme.textTheme.headlineLarge,
+                  Image.network(
+                    'https://openweathermap.org/img/wn/${weather.iconCode}@2x.png',
+                    height: ResponsiveManager.getVerticalSize(250),
+                    width: ResponsiveManager.size.width,
                   ),
                   Text(
-                    '${weather.feelsLike.toString()}°C',
-                    style: Theme.of(context).textTheme.headlineLarge,
+                    weather.cityName,
+                    style: theme.textTheme.displayLarge,
+                  ),
+                  Text(
+                    weather.countryName,
+                    style: theme.textTheme.titleLarge,
+                  ),
+                  Divider(
+                      endIndent: ResponsiveManager.size.width*0.2,
+                      indent: ResponsiveManager.size.width*0.2,
+                      thickness: 1.5),
+                  Text(
+                    '\n${weather.feelsLike.toString()}°C',
+                    style: theme.textTheme.titleLarge,
                   ),
                   Text(
                     weather.description,
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    textAlign: TextAlign.center,
+                    style: theme.textTheme.titleLarge,
                   ),
                 ],
               ),

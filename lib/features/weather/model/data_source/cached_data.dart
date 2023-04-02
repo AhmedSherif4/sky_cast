@@ -1,5 +1,4 @@
 // key for special data
-import 'package:flutter/foundation.dart';
 import 'package:sky_cast/features/weather/model/model/model.dart';
 
 const cacheDataKey = 'CacheDataKey';
@@ -24,9 +23,7 @@ class CachedWeatherDataImpl implements CachedWeatherData {
   Future<WeatherModel> getData() async {
     CachedModel? cachedModel = cacheMap[cacheDataKey];
     if (cachedModel != null && cachedModel.isValid(cacheDataInterval)) {
-      if (kDebugMode) {
-        print('Data got from Cache:${cachedModel.data}');
-      }
+     
       return cachedModel.data;
     } else {
       throw Exception();

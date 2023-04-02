@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../manager/material_design/font_manager.dart';
+import '../../../../manager/responsive_manager.dart';
+
 class WeatherEmpty extends StatelessWidget {
   const WeatherEmpty({super.key});
 
@@ -9,10 +12,10 @@ class WeatherEmpty extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text('🏙️', style: TextStyle(fontSize: 64)),
+         Text('🏙️', style: TextStyle(fontSize: ResponsiveManager.getFontSize(FontSize.s60))),
         Text(
-          'Please Select a City!',
-          style: theme.textTheme.headlineSmall,
+          '\nPlease Select a City!',
+          style: theme.textTheme.headlineLarge,
         ),
       ],
     );

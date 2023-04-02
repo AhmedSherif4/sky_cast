@@ -11,13 +11,11 @@ class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit(this._appPreferences) : super(ThemeInitial());
 
   isDark(bool value) {
-    print('set pref in cubit:$value');
     _appPreferences.isDarkMode(value);
     emit(SetTheme());
   }
 
   bool themeModeIsDark() {
-    print('get pref in cubit: ${_appPreferences.themeModeIsDark()} aaaaa');
     return _appPreferences.themeModeIsDark();
   }
 }

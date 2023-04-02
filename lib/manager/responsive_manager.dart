@@ -4,10 +4,10 @@ class ResponsiveManager {
   static final window = WidgetsBinding.instance.window;
   static Size size = window.physicalSize / window.devicePixelRatio;
 
-  // for (right/left) padding and margin, and width.
+  /// for (right/left) padding and margin, and width.
   static double getHorizontalSize(double px) => px * (size.width / 390);
 
-  // for (top/bottom) padding and margin, and height.
+  /// for (top/bottom) padding and margin, and height.
   static double getVerticalSize(double px) {
     num statusBar = MediaQueryData.fromWindow(window).viewPadding.top;
     num screenHeight = size.height - statusBar;

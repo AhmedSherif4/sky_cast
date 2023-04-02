@@ -33,14 +33,12 @@ class WeatherCubit extends Cubit<WeatherState> {
         emit(WeatherState(status: WeatherStatus.initial));
       }
     } on Exception {
-      print('annnnnnnnn');
 
       emit(state.copyWith(status: WeatherStatus.failure));
     }
   }
 
   Future<void> refreshWeather() async {
-    print('refresh weather in cubit');
 
     if (!state.status.isSuccess) return;
     if (state.weather == WeatherModel.emptyWeather) return;

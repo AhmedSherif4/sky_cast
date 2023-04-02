@@ -13,7 +13,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: !kReleaseMode || !kProfileMode,
+      enabled: !kReleaseMode && !kProfileMode,
       builder: (context) => MyApp(), // Wrap your app
     ),
   );

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../application/app_pref.dart';
-import '../../application/dependency_injection.dart';
+
 import 'color_manager.dart';
 import 'font_manager.dart';
 
 class StyleManager {
-  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   TextStyle _getTextStyle({
     Color? color,
